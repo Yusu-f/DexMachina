@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DexMachina — Build with us</title>
+    <link rel="icon" type="image/jpeg" href="icon.jpg" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #fdfdf9;
+        color: #111;
+        min-height: 100vh;
+      }
+
+      header {
+        padding: 32px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      main {
+        display: flex;
+        justify-content: center;
+        padding: 48px 24px 96px;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 720px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin: 0 0 10px;
+        letter-spacing: 0.02em;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        font-size: 15px;
+        background: transparent;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .double {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      button {
+        width: fit-content;
+        padding: 12px 28px;
+        border: 1px solid #111;
+        background: transparent;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #111;
+        color: #fdfdf9;
+      }
+
+      small {
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 12px;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          padding: 24px;
+        }
+
+        main {
+          padding: 32px 20px 64px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">DexMachina</a>
+      <span>Careers</span>
+    </header>
+    <main>
+      <div class="shell">
+        <section>
+          <h1>Build with us.</h1>
+          <p>
+            We’re forming a distributed network of African experts who can teach
+            AI how real operations work. Tell us a bit about your background and
+            where you create leverage.
+          </p>
+        </section>
+        <form action="https://formspree.io/f/xanvnrlj" method="POST" id="careersForm" novalidate>
+          <div class="double">
+            <div>
+              <label for="name">Full name*</label>
+              <input id="name" name="name" required />
+            </div>
+            <div>
+              <label for="email">Email*</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="double">
+            <div>
+              <label for="region">Primary location*</label>
+              <input
+                id="region"
+                name="region"
+                placeholder="City, Country"
+                required
+              />
+            </div>
+            <div>
+              <label for="role">Role focus*</label>
+              <select id="role" name="role" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Software / Systems</option>
+                <option>Data / Analytics</option>
+                <option>Operations / Ops Excellence</option>
+                <option>Security / Infrastructure</option>
+                <option>Applied Research</option>
+                <option>Agriculture / AgTech</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="experience">Relevant experience*</label>
+            <textarea
+              id="experience"
+              name="experience"
+              placeholder="Teams you’ve led, systems you’ve shipped, crises you’ve solved"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <label for="portfolio">Links*</label>
+            <input
+              id="portfolio"
+              name="portfolio"
+              type="url"
+              placeholder="CV, LinkedIn, portfolio, published work"
+              required
+            />
+          </div>
+          <div>
+            <label for="notes">Anything else?</label>
+            <textarea
+              id="notes"
+              name="notes"
+              placeholder="Availability, preferred domains, languages, etc."
+            ></textarea>
+          </div>
+          <small>We’ll review and get back to you within a week.</small>
+          <button type="submit">Submit interest</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

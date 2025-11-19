@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DexMachina — Meet the team</title>
+    <link rel="icon" type="image/jpeg" href="icon.jpg" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #fdfdf9;
+        color: #111;
+        min-height: 100vh;
+      }
+
+      header {
+        padding: 28px 48px 0;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      main {
+        padding: 48px 24px 80px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .form-shell {
+        width: 100%;
+        max-width: 720px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 26px;
+        letter-spacing: 0.02em;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 6px 0 0;
+        line-height: 1.6;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.6);
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        background: transparent;
+        border-radius: 8px;
+        font-size: 15px;
+        color: #111;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .double {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 18px;
+      }
+
+      button {
+        width: fit-content;
+        padding: 12px 32px;
+        border: 1px solid #111;
+        background: transparent;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #111;
+        color: #fdfdf9;
+      }
+
+      small {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.55);
+      }
+
+      .error-message {
+        color: #b00020;
+        display: none;
+        margin-top: 6px;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          padding: 20px 24px 0;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        main {
+          padding: 32px 20px 64px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>DexMachina</div>
+    </header>
+    <main>
+      <div class="form-shell">
+        <div>
+          <h1>Book a demo.</h1>
+          <p>
+            Let's explore how we can help you with your data and evaluation
+            needs.
+          </p>
+        </div>
+        <form action="https://formspree.io/f/movrvgkr" method="POST" id="demoForm" novalidate>
+          <div class="double">
+            <div>
+              <label for="first">First name*</label>
+              <input id="first" name="first" required />
+              <small class="error-message" id="firstError"
+                >Please enter a first name.</small
+              >
+            </div>
+            <div>
+              <label for="last">Last name*</label>
+              <input id="last" name="last" required />
+              <small class="error-message" id="lastError"
+                >Please enter a last name.</small
+              >
+            </div>
+          </div>
+          <div class="double">
+            <div>
+              <label for="company">Company*</label>
+              <input id="company" name="company" required />
+              <small class="error-message" id="companyError"
+                >Company is required.</small
+              >
+            </div>
+            <div>
+              <label for="title">Role*</label>
+              <input id="title" name="title" required />
+              <small class="error-message" id="titleError"
+                >Role is required.</small
+              >
+            </div>
+          </div>
+          <div>
+            <label for="email">Work email*</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="name@company.com"
+            />
+            <small id="emailError" class="error-message"
+              >Please use a valid work email.</small
+            >
+          </div>
+          <div>
+            <label for="details">Project details*</label>
+            <textarea
+              id="details"
+              name="details"
+              placeholder="Tell us a bit about your project."
+              required
+            ></textarea>
+            <small class="error-message" id="detailsError"
+              >Give us a short overview.</small
+            >
+          </div>
+          <div>
+            <label for="timeline">Ideal start date</label>
+            <input id="timeline" name="timeline" placeholder="e.g. Q1 2026" />
+          </div>
+          <div>
+            <label for="links">Relevant links</label>
+            <input id="links" name="links" placeholder="Deck, spec, site" />
+          </div>
+          <small>
+            By submitting, you agree to our privacy guidelines. We’ll respond
+            within two business days.
+          </small>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      (function () {
+        const form = document.getElementById("demoForm");
+        const email = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+        const blockedDomains = [
+          "gmail.com",
+          "yahoo.com",
+          "outlook.com",
+          "icloud.com",
+          "hotmail.com",
+          "live.com",
+          "protonmail.com",
+        ];
+
+        const requiredFields = [
+          { input: document.getElementById("first"), error: "firstError" },
+          { input: document.getElementById("last"), error: "lastError" },
+          { input: document.getElementById("company"), error: "companyError" },
+          { input: document.getElementById("title"), error: "titleError" },
+          { input: document.getElementById("details"), error: "detailsError" },
+        ];
+
+        function toggleError(id, show) {
+          const node = document.getElementById(id);
+          if (node) node.style.display = show ? "block" : "none";
+        }
+
+        function isWorkEmail(value) {
+          const match = value.match(/^[^@\s]+@([^@\s]+)$/);
+          if (!match) return false;
+          const domain = match[1].toLowerCase();
+          return !blockedDomains.some((blocked) => domain === blocked);
+        }
+
+        function validateRequiredFields() {
+          let valid = true;
+          requiredFields.forEach(({ input, error }) => {
+            const ok = Boolean(input.value.trim());
+            toggleError(error, !ok);
+            if (!ok) valid = false;
+          });
+          return valid;
+        }
+
+        form.addEventListener("submit", (event) => {
+          let valid = validateRequiredFields();
+          const value = email.value.trim();
+          if (!isWorkEmail(value)) {
+            email.setCustomValidity("Please use a work email address.");
+            toggleError("emailError", true);
+            valid = false;
+          } else {
+            email.setCustomValidity("");
+            toggleError("emailError", false);
+          }
+
+          if (!valid) {
+            event.preventDefault();
+          }
+        });
+
+        requiredFields.forEach(({ input, error }) => {
+          input.addEventListener("input", () => {
+            toggleError(error, !input.value.trim());
+          });
+        });
+
+        email.addEventListener("input", () => {
+          email.setCustomValidity("");
+          toggleError("emailError", false);
+        });
+      })();
+    </script>
+  </body>
+</html>

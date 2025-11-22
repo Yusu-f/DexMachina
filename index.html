@@ -116,6 +116,175 @@
         color: #fdfdf9;
       }
 
+      .divider {
+        margin: 48px 0 32px;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+      }
+
+      .report-section {
+        margin-top: 32px;
+      }
+
+      .report-section p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(0, 0, 0, 0.7);
+        margin-bottom: 20px;
+      }
+
+      .report-button {
+        margin-top: 8px;
+      }
+
+      .report-button .cta {
+        margin-top: 0;
+      }
+
+      .report-button button,
+      .report-button a {
+        padding: 12px 20px;
+        border: 1px solid #111;
+        background: transparent;
+        color: #111;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .report-button button:hover,
+      .report-button a:hover {
+        background-color: #111;
+        color: #fdfdf9;
+      }
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal {
+        background: #fdfdf9;
+        max-width: 480px;
+        width: 100%;
+        padding: 40px;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #111;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.6;
+      }
+
+      .modal-close:hover {
+        opacity: 1;
+      }
+
+      .modal h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .modal p {
+        margin: 0 0 24px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .modal-form label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.6);
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .modal-form input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        font-size: 15px;
+        background: transparent;
+        color: #111;
+        font-family: inherit;
+      }
+
+      .modal-form button {
+        width: fit-content;
+        padding: 12px 32px;
+        border: 1px solid #111;
+        background: transparent;
+        color: #111;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px;
+        cursor: pointer;
+        margin-top: 8px;
+      }
+
+      .modal-form button:hover:not(:disabled) {
+        background: #111;
+        color: #fdfdf9;
+      }
+
+      .modal-form button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .modal-success {
+        display: none;
+      }
+
+      .modal-success.active {
+        display: block;
+      }
+
+      .modal-form.hidden {
+        display: none;
+      }
+
       @media (max-width: 600px) {
         header {
           padding: 24px 20px;
@@ -225,12 +394,137 @@
           <div class="cta">
             <a href="demo.html" target="_blank" rel="noopener">Let’s talk</a>
           </div>
+          <div class="divider"></div>
+          <div class="report-section">
+            <p>
+              Get the <b>"State of Data Labeling 2026"</b> report and discover
+              why high-performing AI teams are replacing generic crowdworkers
+              with skilled domain experts around the world.
+            </p>
+            <div class="report-button">
+              <button type="button" onclick="openModal()">Get report</button>
+            </div>
+          </div>
         </div>
       </main>
+      <div
+        class="modal-overlay"
+        id="reportModal"
+        onclick="closeModalOnOverlay(event)"
+      >
+        <div class="modal" onclick="event.stopPropagation()">
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">
+            ×
+          </button>
+          <div class="modal-form" id="reportForm">
+            <h2>Get the report</h2>
+            <p>
+              Enter your email and we'll send you the "State of Data Labeling
+              2026" report.
+            </p>
+            <form
+              id="reportEmailForm"
+              action="https://formspree.io/f/xpwnrjar"
+              method="POST"
+            >
+              <label for="reportEmail">Email*</label>
+              <input
+                id="reportEmail"
+                name="email"
+                type="email"
+                required
+                placeholder="you@company.com"
+              />
+              <button type="submit">Get report</button>
+            </form>
+          </div>
+          <div class="modal-success" id="reportSuccess">
+            <h2>Check your inbox</h2>
+            <p>
+              We've sent the "State of Data Labeling 2026" report to your email.
+              It should arrive shortly.
+            </p>
+          </div>
+        </div>
+      </div>
       <footer>
         <div>© 2025 DexMachina</div>
         <!-- <div>Built in Lagos · Nairobi · Kigali</div> -->
       </footer>
     </div>
+    <script>
+      function openModal() {
+        document.getElementById("reportModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("reportModal").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function closeModalOnOverlay(event) {
+        if (event.target === event.currentTarget) {
+          closeModal();
+        }
+      }
+
+      async function handleReportSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const endpointUrl = "https://formspree.io/f/xpwnrjar"; // Formspree endpoint
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        try {
+          const response = await fetch(endpointUrl, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json", // Formspree recommends this header
+            },
+          });
+
+          if (response.ok) {
+            // Hide form, show success
+            form.reset(); // Reset the form after success
+            document.getElementById("reportForm").classList.add("hidden");
+            document.getElementById("reportSuccess").classList.add("active");
+          } else {
+            // Handle server errors
+            const data = await response.json();
+            if (data.errors) {
+              alert(
+                "Submission failed: " +
+                  data.errors.map((e) => e.message).join(", ")
+              );
+            } else {
+              alert("Submission failed.");
+            }
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          }
+        } catch (error) {
+          // Handle network errors
+          console.error("Network error:", error);
+          alert("A network error occurred.");
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+
+      // Close modal on Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
